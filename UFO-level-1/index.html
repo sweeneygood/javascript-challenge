@@ -12,8 +12,6 @@
 
 <body>
 
-
-
   <div class="wrapper">
     <nav class="navbar navbar-default">
       <div class="container-fluid">
@@ -33,33 +31,16 @@
         <div class="col-md-2">
           <aside class="filters">
             <div class="panel panel-default">
-              <form>
-                <div class="form-group">
-                  <label for="datefilter">Enter a Date</label>
-                  <input type="date" class="form-control" id="datefilter">
-                </div>
-                </form>
-                <form>
-                  <div class="form-group">
-                    <label for="cityfilter">Enter a City</label>
-                    <input type="text" class="form-control" id="cityfilter">
-                  </div>
-                  </form>
-            
               <div class="panel-heading">Filter Search</div>
               <div class="panel-body">
-                <form>
+                <form id="form">
                   <div class="form-group">
-                    <ul class="list-group" id="filters">
-                      <li class="filter list-group-item">
-                        <label for="date">Enter a Date</label>
-                        <input class="form-control" id="datetime" type="text" placeholder="1/11/2011">
-                      </li>
-                    </ul>
+                    <label for="date-filter">Enter a Date</label>
+                    <input type="date" class="form-control" id="datefilter1">
                   </div>
-                  <button id="filter-btn" type="button" class="btn btn-default">Filter Table</button>
+                  <button id="button" type="button" class="btn btn-default">Filter</button>
+                </div>
                 </form>
-              </div>
             </div>
           </aside>
         </div>
