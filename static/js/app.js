@@ -14,7 +14,8 @@ var form = d3.select("#form");
 button.on("click", runFilter);
 form.on("submit", runFilter);
 
-displayTable(tableData); 
+// Call function to display the table data, passing in the dataset
+displayTable(tableData);
 
 function runFilter() {
 
@@ -28,12 +29,19 @@ function runFilter() {
     var inputValue = inputElement.property("value");
 
 
-   // d1 = new Date(document.getElementById("date1").value);
+    // d1 = new Date(document.getElementById("date1").value);
 
     console.log("inputValue");
-    console.log(formatDate(inputValue));
+   // console.log(formatDate(inputValue));
+    console.log(inputValue);
 
-    var filteredData = tableData.filter(o => o.datetime === formatDate(inputValue));
+    var filteredData = tableData.filter(o => {
+        var formattedDate = formatDate(o.datetime);
+        console.log(formattedDate);
+        return formattedDate === inputValue;
+    });
+
+    //var filteredData = tableData.filter(o => o.datetime === inputValue); 
 
     console.log(filteredData);
 
@@ -41,7 +49,7 @@ function runFilter() {
     tbody.html("");
 
     // Call the displayTable function for the filtered dataset 
-    displayTable(filteredData); 
+    displayTable(filteredData);
 
 }
 
@@ -52,23 +60,24 @@ function formatDate(date) {
         day = '' + d.getDate(),
         year = d.getFullYear();
 
-    if (month.length < 2) 
+    if (month.length < 2)
         month = '0' + month;
-    if (day.length < 2) 
+    if (day.length < 2)
         day = '0' + day;
 
     return [year, month, day].join('-');
 }
- 
 
 
+// display the table using the tableData as the dataset
 function displayTable(tableData) {
+
     tableData.forEach(function (UFOdata) {
         var row = tbody.append("tr");
-
         Object.entries(UFOdata).forEach(function ([key, value]) {
             var cell = row.append("td");
             cell.text(value);
         });
+
     });
 }
